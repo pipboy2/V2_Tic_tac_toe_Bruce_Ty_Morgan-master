@@ -10,7 +10,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
     public class ConsoleView
     {
         #region ENUMS
-
+        
         public enum ViewState
         {
             Active,
@@ -19,6 +19,8 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         }
 
         #endregion
+
+        //a
 
         #region FIELDS
 
