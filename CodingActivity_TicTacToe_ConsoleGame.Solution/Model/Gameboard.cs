@@ -34,7 +34,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
 
         #region FIELDS
 
-        private const int MAX_NUM_OF_ROWS_COLUMNS = 3;
+        private const int MAX_NUM_OF_ROWS_COLUMNS = 4;
 
         private PlayerPiece[,] _positionState;
 
@@ -147,9 +147,9 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             // All positions on board are filled and no winner
             //
-            for (int row = 0; row < 3; row++)
+            for (int row = 0; row < 4; row++)
             {
-                for (int column = 0; column < 3; column++)
+                for (int column = 0; column < 4; column++)
                 {
                     if (_positionState[row, column] == PlayerPiece.None)
                     {
@@ -170,11 +170,14 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             // Check rows for player win
             //
-            for (int row = 0; row < 3; row++)
+            for (int row = 0; row < 4; row++)
             {
-                if (_positionState[row, 0] == playerPieceToCheck &&
-                    _positionState[row, 1] == playerPieceToCheck &&
-                    _positionState[row, 2] == playerPieceToCheck)
+                if (_positionState[row, 1] == playerPieceToCheck &&
+                    _positionState[row, 2] == playerPieceToCheck && 
+                    (
+                        _positionState[row, 0] == playerPieceToCheck ||
+                        _positionState[row, 3] == playerPieceToCheck)
+                    )
                 {
                     return true;
                 }
@@ -183,27 +186,43 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             // Check columns for player win
             //
-            for (int column = 0; column < 3; column++)
+            for (int column = 0; column < 4; column++)
             {
-                if (_positionState[0, column] == playerPieceToCheck &&
-                    _positionState[1, column] == playerPieceToCheck &&
-                    _positionState[2, column] == playerPieceToCheck)
+                if (_positionState[1, column] == playerPieceToCheck &&
+                    _positionState[2, column] == playerPieceToCheck &&
+                        (
+                        _positionState[0, column] == playerPieceToCheck ||
+                        _positionState[3, column] == playerPieceToCheck)
+                        )
                 {
                     return true;
                 }
             }
 
             //
-            // Check diagonals for player win
+            // Check diagonals & 4-corner for player win
             //
             if (
-                (_positionState[0, 0] == playerPieceToCheck &&
-                _positionState[1, 1] == playerPieceToCheck &&
-                _positionState[2, 2] == playerPieceToCheck)
+                (_positionState[1, 1] == playerPieceToCheck &&
+                _positionState[2, 2] == playerPieceToCheck &&
+                    (
+                    _positionState[0, 0] == playerPieceToCheck ||
+                    _positionState[3, 3] == playerPieceToCheck)
+                    )
                 ||
-                (_positionState[0, 2] == playerPieceToCheck &&
-                _positionState[1, 1] == playerPieceToCheck &&
-                _positionState[2, 0] == playerPieceToCheck)
+                (_positionState[2, 1] == playerPieceToCheck &&
+                _positionState[1, 2] == playerPieceToCheck && 
+                    (
+                    _positionState[0, 3] == playerPieceToCheck ||
+                    _positionState[3, 0] == playerPieceToCheck)
+                    )
+                ||
+                (_positionState[1, 1] == playerPieceToCheck &&
+                _positionState[2, 2] == playerPieceToCheck && 
+                    (
+                    _positionState[0, 0] == playerPieceToCheck ||
+                    _positionState[3, 3] == playerPieceToCheck)
+                    )
                 )
             {
                 return true;
