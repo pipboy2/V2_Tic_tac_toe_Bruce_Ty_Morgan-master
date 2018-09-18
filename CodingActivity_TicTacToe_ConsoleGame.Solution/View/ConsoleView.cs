@@ -26,7 +26,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
 
         private const int GAMEBOARD_VERTICAL_LOCATION = 4;
 
-        private const int POSITIONPROMPT_VERTICAL_LOCATION = 12;
+        private const int POSITIONPROMPT_VERTICAL_LOCATION = 13;
         private const int POSITIONPROMPT_HORIZONTAL_LOCATION = 3;
 
         private const int MESSAGEBOX_VERTICAL_LOCATION = 15;
@@ -316,13 +316,13 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             Console.SetCursorPosition(0, GAMEBOARD_VERTICAL_LOCATION);
 
-            Console.Write("\t\t\t        |---+---+---|\n");
+            Console.Write("\t\t\t        |---+---+---+---|\n");
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Console.Write("\t\t\t        | ");
 
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     if (_gameboard.PositionState[i, j] == Gameboard.PlayerPiece.None)
                     {
@@ -335,9 +335,9 @@ namespace CodingActivity_TicTacToe_ConsoleGame
 
                 }
 
-                Console.Write("\n\t\t\t        |---+---+---|\n");
+                Console.Write("\n\t\t\t        |---+---+---+---|\n");
             }
-
+            Console.Write("\t\t\t        |---+---+---+---|\n");
         }
 
         /// <summary>
