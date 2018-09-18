@@ -8,8 +8,6 @@ namespace CodingActivity_TicTacToe_ConsoleGame
 {
     public class GameController
     {
-        // Initialized
-        //test 123
         #region FIELDS
         //
         // track game and round status
@@ -22,14 +20,18 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         //
         // track the results of multiple rounds
         //
+
+        //private Gameboard.PlayerPiece _winningPlayer;
         private int _playerXNumberOfWins;
         private int _playerONumberOfWins;
         private int _numberOfCatsGames;
+        //private int _winStreak;
 
         //
         // instantiate  a Gameboard object
         // instantiate a GameView object and give it access to the Gameboard object
         //
+
         private static Gameboard _gameboard = new Gameboard();
         private static ConsoleView _gameView = new ConsoleView(_gameboard);
 
@@ -67,6 +69,8 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             _playerONumberOfWins = 0;
             _playerXNumberOfWins = 0;
             _numberOfCatsGames = 0;
+            //_winstreak = 0;
+            //_winningPlayer = Gameboard.PlayerPiece.None;
 
             //
             // Initialize game board status
@@ -87,6 +91,8 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 //
                 // Round loop
                 //
+                //Gameboard.PlayerPiece winner = Gameboard.PlayerPiece.None;
+
                 while (_playingRound)
                 {
                     //
@@ -97,12 +103,20 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     //
                     // Evaluate and update the current game board state
                     //
+
+                    //_gameboard.UpdateGameboardState(out winner);
                     _gameboard.UpdateGameboardState();
                 }
+
 
                 //
                 // Round Complete: Display the results
                 //
+
+                //updateWinStreak(winner);
+                //_winningPlayer = winner;
+
+                //_gameView.DisplayCurrentGameStatus(_roundNumber, _playerXNumberOfWins, _playerONumberOfWins, _numberOfCatsGames, _winStreak);
                 _gameView.DisplayCurrentGameStatus(_roundNumber, _playerXNumberOfWins, _playerONumberOfWins, _numberOfCatsGames);
 
                 //
@@ -120,6 +134,31 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                         _gameView.InitializeView();
                         _playingRound = true;
                     }
+
+                    //else
+                    //{
+                    //    // end previous round stats
+                    //    _playingRound = false;
+                    //    _playerONumberOfWins = 0;
+                    //    _playerXNumberOfWins = 0;
+                    //    _numberOfCatsGames = 0;
+                    //    _roundNumber = 0;
+                    //    _winStreak = 0;
+                    //    _winningPlayer = Gameboard.PlayerPiece.None;
+
+                    //    if (_gameView.DisplayExitGamePrompt())
+                    //    {
+                    //        _playingGame = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        _gameboard.InitializeGameboard();
+                    //        _gameView.InitializeView();
+                    //        _playingRound = true;
+                    //    }
+                    //}
+
+
                 }
                 //
                 // Major user error recorded, end game
@@ -128,6 +167,8 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 {
                     _playingGame = false;
                 }
+
+
             }
 
             _gameView.DisplayClosingScreen();
@@ -220,6 +261,29 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 }
             }
         }
+        //private void updateWinStreak(Gameboard.PlayerPiece winningPlayer)
+        //{
+        //    switch (winningPlayer)
+        //    {
+        //        case Gameboard.PlayerPiece.X:
+        //            if (_winningPlayer == Gameboard.PlayerPiece.X)
+        //                _winStreak++;
+        //            else
+        //                _winStreak = 1;
+        //            break;
+        //        case Gameboard.PlayerPiece.O:
+        //            if (_winningPlayer == Gameboard.PlayerPiece.O)
+        //                _winStreak++;
+        //            else
+        //                _winStreak = 1;
+        //            break;
+        //        case Gameboard.PlayerPiece.None:
+        //            _winStreak = 0;
+        //            break;
+        //        default:
+        //            throw new InvalidOperationException("Specified incorrect player piece.");
+        //    }
+        //}
 
         #endregion
     }

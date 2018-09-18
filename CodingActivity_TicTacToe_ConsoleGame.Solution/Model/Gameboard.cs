@@ -100,6 +100,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         /// </summary>
         /// <param name="gameboardPosition"></param>
         /// <returns>true if position is open</returns>
+        /// 
         public bool GameboardPositionAvailable(GameboardPosition gameboardPosition)
         {
             //
