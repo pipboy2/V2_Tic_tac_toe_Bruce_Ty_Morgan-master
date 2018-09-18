@@ -181,7 +181,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             ConsoleUtil.HeaderText = "The Tic-tac-toe Game";
             ConsoleUtil.DisplayReset();
 
-            ConsoleUtil.DisplayMessage("Written by John Velis");
+            ConsoleUtil.DisplayMessage("Written by the Jaguars: Bruce, Ty, Morgan");
             ConsoleUtil.DisplayMessage("Northwestern Michigan College");
             Console.WriteLine();
 
@@ -337,7 +337,6 @@ namespace CodingActivity_TicTacToe_ConsoleGame
 
                 Console.Write("\n\t\t\t        |---+---+---+---|\n");
             }
-            Console.Write("\t\t\t        |---+---+---+---|\n");
         }
 
         /// <summary>
@@ -457,7 +456,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     //
                     else
                     {
-                        DisplayMessageBox(coordinateType + " numbers are limited to (1,2,3)");
+                        DisplayMessageBox(coordinateType + " numbers are limited to (1,2,3,4)");
                     }
                 }
                 //
@@ -465,7 +464,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 //
                 else
                 {
-                    DisplayMessageBox(coordinateType + " numbers are limited to (1,2,3)");
+                    DisplayMessageBox(coordinateType + " numbers are limited to (1,2,3,4)");
                 }
 
                 //
