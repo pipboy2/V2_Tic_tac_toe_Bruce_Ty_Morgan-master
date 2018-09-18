@@ -203,7 +203,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             // Check diagonals & 4-corner for player win
             //
-            if (
+            if (//forward diagonal middle
                 (_positionState[1, 1] == playerPieceToCheck &&
                  _positionState[2, 2] == playerPieceToCheck &&
                     (
@@ -211,7 +211,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     _positionState[3, 3] == playerPieceToCheck
                     )
                 )
-                ||
+                ||//backward diagonal middle
                 (_positionState[2, 1] == playerPieceToCheck &&
                 _positionState[1, 2] == playerPieceToCheck && 
                     (
@@ -220,12 +220,38 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     )
                 )
                 ||
-                (
+                (//four corners
                 _positionState[0, 0] == playerPieceToCheck &&
                 _positionState[0, 3] == playerPieceToCheck && 
                 _positionState[3, 0] == playerPieceToCheck &&
                 _positionState[3, 3] == playerPieceToCheck
-                ))
+                )
+                ||
+                (//forward diag 2
+                _positionState[1, 0] == playerPieceToCheck &&
+                _positionState[2, 1] == playerPieceToCheck && 
+                _positionState[3, 2] == playerPieceToCheck 
+                )
+                ||
+                (//forward diag 3
+                _positionState[0, 1] == playerPieceToCheck &&
+                _positionState[1, 2] == playerPieceToCheck && 
+                _positionState[2, 3] == playerPieceToCheck 
+                )
+                ||
+                (//backward diag 2
+                _positionState[2, 0] == playerPieceToCheck &&
+                _positionState[1, 1] == playerPieceToCheck && 
+                _positionState[0, 2] == playerPieceToCheck 
+                )
+                ||
+                (//backward diag 3
+                _positionState[1, 3] == playerPieceToCheck &&
+                _positionState[2, 2] == playerPieceToCheck && 
+                _positionState[3, 1] == playerPieceToCheck 
+                )
+                
+                )
             {
                 return true;
             }
