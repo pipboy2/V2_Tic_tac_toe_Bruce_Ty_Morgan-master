@@ -121,7 +121,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         /// <summary>
         /// Update the game board state if a player wins or a cat's game happens.
         /// </summary>
-        public void UpdateGameboardState()
+        public void UpdateGameboardState(out PlayerPiece winner)
         {
             if (ThreeInARow(PlayerPiece.X))
             {
@@ -140,6 +140,10 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             else if (IsCatsGame())
             {
                 _currentRoundState = GameboardState.CatsGame;
+            }
+            // Exception
+            {
+                winner = PlayerPiece.None;
             }
         }
         

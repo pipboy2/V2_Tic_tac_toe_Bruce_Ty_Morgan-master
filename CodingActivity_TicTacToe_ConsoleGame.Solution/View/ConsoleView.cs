@@ -193,6 +193,11 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             Console.WriteLine();
 
             sb.Clear();
+            sb.AppendFormat("Entering Q during the game will exit program.");
+            ConsoleUtil.DisplayMessage(sb.ToString());
+            Console.WriteLine();
+
+            sb.Clear();
             sb.AppendFormat("Your first task will be to set up your account details.");
             ConsoleUtil.DisplayMessage(sb.ToString());
 
@@ -442,7 +447,8 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             {
                 DisplayPositionPrompt(coordinateType);
 
-                if (int.TryParse(Console.ReadLine(), out tempCoordinate))
+                string userChoice = Console.ReadLine();
+                if (int.TryParse(userChoice, out tempCoordinate))
                 {
                     //
                     // Player response within range
@@ -458,6 +464,13 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     {
                         DisplayMessageBox(coordinateType + " numbers are limited to (1,2,3,4)");
                     }
+                }
+                //
+                // Always true exit game command
+                //
+                else if (userChoice.ToUpper() == "Q")
+                {
+                    DisplayExitPrompt();
                 }
                 //
                 // Player response cannot be parsed as integer
@@ -478,6 +491,22 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             //
             CurrentViewState = ViewState.PlayerUsedMaxAttempts;
             return tempCoordinate;
+        }
+        public bool DisplayExitGame()
+        {
+            ConsoleUtil.HeaderText = "Continue or Exit";
+            ConsoleUtil.DisplayReset();
+
+            bool? response = DisplayGetYesNoPrompt("Are you sure you want to quit the game?");
+            if (response == null)
+            {
+                DisplayExitPrompt();
+                return false;
+            }
+            else
+            {
+                return response.Value;
+            }
         }
 
         #endregion
