@@ -218,7 +218,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 case ConsoleView.ViewState.PlayerUsedMaxAttempts:
                     _gameView.DisplayMaxAttemptsReachedScreen();
                     _playingRound = false;
-                    _playingGame = false;
+                    _playingGame = true;
                     break;
                 default:
                     break;
