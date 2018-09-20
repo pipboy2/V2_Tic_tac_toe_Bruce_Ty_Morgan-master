@@ -9,7 +9,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
     public class GameController
     {
 
-        // Hey there
+      
         #region FIELDS
         //
         // track game and round status
