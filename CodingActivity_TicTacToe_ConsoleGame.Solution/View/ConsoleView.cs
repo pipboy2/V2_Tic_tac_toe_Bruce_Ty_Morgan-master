@@ -113,7 +113,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             Console.CursorVisible = false;
 
             Console.WriteLine();
-            ConsoleUtil.DisplayMessage("Thank you for play the game. Press any key to Exit.");
+            ConsoleUtil.DisplayMessage("Thank you for playing the game. Press any key to Exit.");
 
             Console.ReadKey();
 
@@ -192,13 +192,21 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             ConsoleUtil.DisplayMessage(sb.ToString());
             Console.WriteLine();
 
-            sb.Clear();
-            sb.AppendFormat("Entering Q during the game will exit program.");
-            ConsoleUtil.DisplayMessage(sb.ToString());
-            Console.WriteLine();
+            //sb.Clear();
+            //sb.AppendFormat("Entering Q during the game will exit program.");
+            //ConsoleUtil.DisplayMessage(sb.ToString());
+            //Console.WriteLine();
 
             sb.Clear();
-            sb.AppendFormat("Your first task will be to set up your account details.");
+            Console.WriteLine("     Menu Options:");
+            Console.WriteLine("");
+            Console.WriteLine("   N.  Play new round");
+            Console.WriteLine("");
+            Console.WriteLine("   R.  View rules");
+            Console.WriteLine("");
+            Console.WriteLine("   S.  View current game stats");
+            Console.WriteLine("");
+            Console.WriteLine("   Q.  Quit");
             ConsoleUtil.DisplayMessage(sb.ToString());
 
             DisplayContinuePrompt();
