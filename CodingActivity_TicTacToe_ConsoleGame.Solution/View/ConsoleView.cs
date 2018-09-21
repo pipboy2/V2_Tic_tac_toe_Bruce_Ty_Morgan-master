@@ -213,6 +213,23 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         }
 
         /// <summary>
+        /// display the rules of the game
+        /// </summary>
+        public void DisplayRules()
+        {
+            Console.WriteLine("The game is played on a 4X4 grid");
+            Console.WriteLine("Players take turns filling in spaces on the board until a player has 3 spaces in a row");
+            Console.WriteLine("Players choose from between 1 through 4 to pick which row they want, ");
+            Console.WriteLine("and choosing 1 through 4 again chooses which column they want");
+            Console.WriteLine("If neither player has gotten 3 spaces in a row when the board is filled, ");
+            Console.WriteLine("then the game is a tie or 'cat'. ");
+            Console.WriteLine("Getting four corners is also a win.");
+            Console.WriteLine("Press N for new game, R for rules, S for stats, and Q for quit.");
+
+            DisplayContinuePrompt();
+        }
+
+        /// <summary>
         /// display a closing screen when the user quits the application
         /// </summary>
         public void DisplayClosingScreen()
