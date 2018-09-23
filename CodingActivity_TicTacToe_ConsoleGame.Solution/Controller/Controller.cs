@@ -33,6 +33,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         //
         private static Gameboard _gameboard = new Gameboard();
         private static ConsoleView _gameView = new ConsoleView(_gameboard);
+        
 
 
         #endregion
@@ -125,9 +126,11 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                     //
                     if (_gameView.DisplayNewRoundPrompt())
                     {
+                        _gameView.DisplayMenuUserAction();
                         _gameboard.InitializeGameboard();
                         _gameView.InitializeView();
                         _playingRound = true;
+
                     }
                     else
                     {
@@ -145,6 +148,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                         }
                         else
                         {
+                            _gameView.DisplayMenuUserAction();
                             _gameboard.InitializeGameboard();
                             _gameView.InitializeView();
                             _playingRound = true;
@@ -254,6 +258,16 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 }
             }
         }
+
+        //private void GameMenu()
+        //{
+            
+        //    switch (_gameView.DisplayMenuUserAction)
+        //    {
+        //        default:
+        //            break;
+        //    }
+        //}
         #endregion
     }
 }

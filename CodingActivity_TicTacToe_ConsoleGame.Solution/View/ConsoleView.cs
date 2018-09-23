@@ -103,6 +103,20 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             Console.CursorVisible = true;
         }
 
+        public void DisplayContinuePromptMenu()
+        {
+            Console.CursorVisible = false;
+
+            Console.WriteLine();
+
+            ConsoleUtil.DisplayMessage("Press any key to go back to Menu.");
+            ConsoleKeyInfo response = Console.ReadKey();
+
+            Console.WriteLine();
+
+            Console.CursorVisible = true;
+        }
+
         /// <summary>
         /// display the Exit prompt on a clean screen
         /// </summary>
@@ -192,24 +206,13 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             ConsoleUtil.DisplayMessage(sb.ToString());
             Console.WriteLine();
 
-            //sb.Clear();
-            //sb.AppendFormat("Entering Q during the game will exit program.");
-            //ConsoleUtil.DisplayMessage(sb.ToString());
-            //Console.WriteLine();
-
             sb.Clear();
-            Console.WriteLine("     Menu Options:");
-            Console.WriteLine("");
-            Console.WriteLine("   N.  Play new round");
-            Console.WriteLine("");
-            Console.WriteLine("   R.  View rules");
-            Console.WriteLine("");
-            Console.WriteLine("   S.  View current game stats");
-            Console.WriteLine("");
-            Console.WriteLine("   Q.  Quit");
+            sb.AppendFormat("Entering Q during the game will exit program.");
             ConsoleUtil.DisplayMessage(sb.ToString());
+            Console.WriteLine();
 
             DisplayContinuePrompt();
+            DisplayMenuUserAction();
         }
 
         /// <summary>
@@ -217,6 +220,9 @@ namespace CodingActivity_TicTacToe_ConsoleGame
         /// </summary>
         public void DisplayRules()
         {
+            ConsoleUtil.HeaderText = "Rules";
+            ConsoleUtil.DisplayReset();
+
             Console.WriteLine("The game is played on a 4X4 grid");
             Console.WriteLine("Players take turns filling in spaces on the board until a player has 3 spaces in a row");
             Console.WriteLine("Players choose from between 1 through 4 to pick which row they want, ");
@@ -226,7 +232,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             Console.WriteLine("Getting four corners is also a win.");
             Console.WriteLine("Press N for new game, R for rules, S for stats, and Q for quit.");
 
-            DisplayContinuePrompt();
+            DisplayContinuePromptMenu();
         }
 
         /// <summary>
@@ -273,7 +279,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             ConsoleUtil.HeaderText = "Continue or Quit";
             ConsoleUtil.DisplayReset();
 
-            return DisplayGetYesNoPrompt("Would you like to play another round?");
+            return DisplayGetYesNoPrompt("Would you like to go back to menu?");
         }
 
         public void DisplayGameStatus()
@@ -497,6 +503,7 @@ namespace CodingActivity_TicTacToe_ConsoleGame
                 {
                     DisplayExitPrompt();
                 }
+
                 //
                 // Player response cannot be parsed as integer
                 //
@@ -531,9 +538,80 @@ namespace CodingActivity_TicTacToe_ConsoleGame
             else
             {
                 return response.Value;
+               
             }
         }
 
+        //
+        // Ask user if they want to play new game, view rules, see stats or quit game as a Menu
+        //
+
+        public string DisplayMenuUserAction()
+        {
+            bool validResponse = false;
+            string userResponse;
+
+
+            StringBuilder sb = new StringBuilder();
+
+
+            ConsoleUtil.HeaderText = "Menu";
+            ConsoleUtil.DisplayReset();
+
+            sb.Clear();
+            Console.WriteLine("     Menu Options:");
+            Console.WriteLine("");
+            Console.WriteLine("   N.  Play new round");
+            Console.WriteLine("");
+            Console.WriteLine("   R.  View rules");
+            Console.WriteLine("");
+            Console.WriteLine("   S.  View current game stats");
+            Console.WriteLine("");
+            Console.WriteLine("   Q.  Quit");
+            ConsoleUtil.DisplayMessage(sb.ToString());
+
+            ConsoleUtil.DisplayPromptMessage("(N, R, S or Q) : ");        
+            userResponse = Console.ReadLine();
+
+
+            while (!validResponse)
+            {
+
+                if (userResponse.ToUpper() == "N")
+                {
+                    validResponse = true;
+                    
+                }
+                else if (userResponse.ToUpper() == "R")
+                {
+                    validResponse = true;
+                    DisplayRules();
+                    DisplayMenuUserAction();
+                }
+                else if (userResponse.ToUpper() == "S")
+                {
+                    validResponse = true;
+                    DisplayCurrentGameStatus(0,0,0,0);
+                    DisplayMenuUserAction();
+                }
+                else if (userResponse.ToUpper() == "Q")
+                {
+                    validResponse = true;
+                    DisplayExitPrompt();                    
+                }
+                else
+                {
+                    ConsoleUtil.DisplayMessage(
+                        "It appears that you have entered an incorrect response." +
+                        " Please enter either N, R, S or Q."
+                        );
+                    DisplayContinuePrompt();
+                    DisplayMenuUserAction();
+                }
+            }
+
+            return userResponse;
+        }
         #endregion
     }
 }
